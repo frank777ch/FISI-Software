@@ -1,0 +1,142 @@
+package Semana5;
+public class NodoLC {
+    int dato;
+    NodoLC siguiente;
+    public NodoLC(int d){
+        dato=d;
+        siguiente=this;
+    }
+}
+
+
+
+
+package Semana5;
+import javax.swing.JOptionPane;
+public class ListaLC {
+    NodoLC ultimo;
+    public ListaLC(){
+        ultimo=null;
+    }
+    //Metodo para saber cuando la lista esta vacia
+    public boolean estaVacia(){
+        return ultimo==null;
+    }
+    //Metodo para insertar Nodos
+    public ListaLC insertar(int elemento){
+        NodoLC nuevo=new NodoLC(elemento);
+        if(ultimo!=null){
+            nuevo.siguiente=ultimo.siguiente;
+            ultimo.siguiente=nuevo;
+        }else{
+            ultimo=nuevo;
+        }
+        return this;
+    }
+    //Metodo para mostrar la lista
+    public void mostrarLista(){
+        NodoLC auxiliar=ultimo.siguiente;
+        String cadena="";
+        do{
+            cadena=cadena + "["+auxiliar.dato+"]->";
+            auxiliar=auxiliar.siguiente;
+        }while(auxiliar!=ultimo.siguiente);
+        JOptionPane.showMessageDialog(null, cadena, 
+                "Mostrando la Lista Circular",JOptionPane.INFORMATION_MESSAGE);
+    }
+    //Metodo para eliminar un nodo de la lista circular
+    public boolean eliminar(int elemento){
+        NodoLC actual;
+        boolean encontrado=false;
+        actual=ultimo;
+        while(actual.siguiente!=ultimo && !encontrado){
+            encontrado=(actual.siguiente.dato==elemento);
+            if(!encontrado){
+                actual=actual.siguiente;
+            }
+        }
+        encontrado=(actual.siguiente.dato==elemento);
+        if(encontrado){
+            NodoLC auxiliar=actual.siguiente;
+            if(ultimo==ultimo.siguiente){
+                ultimo=null;
+            }else{
+                if(auxiliar==ultimo){
+                    ultimo=actual;
+                }
+                actual.siguiente=auxiliar.siguiente;
+            }
+            auxiliar=null;
+        }
+        return encontrado==true;
+    }
+}
+
+
+
+package Semana5;
+import javax.swing.JOptionPane;
+public class UsoListaLC {
+    public static void main(String[] args) {
+        ListaLC lista3=new ListaLC();
+        int opcion=0,elemento;
+        boolean eliminado=false;
+        do{
+            try{
+                opcion=Integer.parseInt(JOptionPane.showInputDialog(null,
+                        "1. Agregar un Nodo a la lista circular\n"+
+                        "2. Eliminar un nodo de la lista circular\n"+
+                        "3. Mostrar datos de la Lista circular\n"+
+                        "4. Salir\n"+
+                        "¿Que deseas hacer?", "Menu de opciones", JOptionPane.INFORMATION_MESSAGE));
+                switch(opcion){
+                    case 1:
+                        elemento=Integer.parseInt(JOptionPane.showInputDialog(null,
+                                "Ingresa el elemento del Nodo","Agregando el Nodo a la lista circular",
+                                JOptionPane.INFORMATION_MESSAGE));
+                        lista3.insertar(elemento);
+                        break;
+                    case 2:
+                        if(!lista3.estaVacia()){
+                        elemento=Integer.parseInt(JOptionPane.showInputDialog(null,
+                                "Ingresa el elemento del Nodo a eliminar","Eliminando Nodo de la lista circular",
+                                JOptionPane.INFORMATION_MESSAGE));
+                        eliminado=lista3.eliminar(elemento);
+                        if(eliminado){
+                        JOptionPane.showMessageDialog(null,"El elemento eliminado es " + elemento,
+                                "Eliminando Nodos",JOptionPane.INFORMATION_MESSAGE);
+                            
+                        }else{
+                        JOptionPane.showMessageDialog(null,"El elemento "+elemento+" no esta en la lista",
+                                "Elemento no encontrado",JOptionPane.INFORMATION_MESSAGE);
+                            
+                        }
+                        }else{
+                        JOptionPane.showMessageDialog(null,"No hay nodos aun",
+                                "Lista vacia",JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        break;
+                    case 3:
+                        if(!lista3.estaVacia()){
+                            lista3.mostrarLista();
+                        }else{
+                        JOptionPane.showMessageDialog(null,"No hay nodos aun",
+                                "Lista vacia",JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        break;
+                    case 4:
+                        JOptionPane.showMessageDialog(null,"Aplicacion Finalizada",
+                                "Fin",JOptionPane.INFORMATION_MESSAGE);
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null,"La Opcion no esta en el Menu",
+                                "Incorrecto",JOptionPane.INFORMATION_MESSAGE);
+                }
+            }catch(NumberFormatException n){
+                JOptionPane.showMessageDialog(null, "Error "+n.getMessage());
+            }
+            
+        }while(opcion!=4);
+    }
+}
+

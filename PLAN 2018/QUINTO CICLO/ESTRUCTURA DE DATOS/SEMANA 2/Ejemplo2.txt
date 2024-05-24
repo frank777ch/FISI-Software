@@ -1,0 +1,34 @@
+package Semana2;
+import java.util.Arrays;
+import javax.swing.JOptionPane;
+public class AED_Programa5 {
+    public static void main(String[] args) {
+        int[] numeros = new int[5];
+        String[] palabras = new String[5];
+        int[] aleatorio = new int[numeros.length];
+        for(int i=0;i<5;i++){
+            numeros[i]=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el elemento del indice "+i));
+        }
+        System.out.println("Los datos sin ordenar son:");
+        for(int elemento:numeros){
+            System.out.print("["+elemento+"]");
+        }
+        System.out.println("\nLos datos ordenados son: ");
+        Arrays.sort(numeros);//Aqui ordenamos al arreglo números
+        for(int elemento:numeros){
+            System.out.print("["+elemento+"]");
+        }
+        Arrays.fill(palabras,"Bienvenido a la clase");//Poblando el arreglo palabras
+        System.out.println("\nElementos del arreglo palabras");
+        for(String elemento:palabras){
+            System.out.println("["+elemento+"]");
+        }
+        //Copiando los elementos del arreglo numeros a aleatorio
+        System.arraycopy(numeros, 0, aleatorio, 0, numeros.length);
+        System.out.println("Elementos del arreglo aleatorio");
+        for(int elemento:aleatorio){
+            System.out.print("["+elemento+"]");
+        }
+    }
+}
+

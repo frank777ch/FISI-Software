@@ -1,0 +1,32 @@
+package Semana2;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+public class AED_Programa6 {
+    public static void main(String[] args) {
+        // TODO code application logic here
+        ArrayList<String> cadenas=new ArrayList();//Un objeto o instancia de tipo ArrayList
+        String frase, respuesta;
+        do{
+            frase = JOptionPane.showInputDialog("Ingresa la frase");
+            cadenas.add(frase);//Agregando una frase a la lista
+            respuesta = JOptionPane.showInputDialog("¿Deseas ingresar otra frase (SI/NO)?");
+        }while(!respuesta.equalsIgnoreCase("NO"));
+        //mostrando la lista con for clásico
+        System.out.println("Frases originales");
+        for(int i=0;i<cadenas.size();i++){
+            System.out.println(cadenas.get(i));
+        }
+        cadenas.set(1, "Se modificó");//cambiando una frase
+        System.out.println("Frases modificadas");
+        for(String elemento:cadenas){
+            System.out.println(elemento);
+        }
+        cadenas.remove(0);//borrando la primera frase
+        System.out.println("Frases que quedan");
+        for(String elemento:cadenas){
+            System.out.println(elemento);
+        }
+        
+    }
+}
+

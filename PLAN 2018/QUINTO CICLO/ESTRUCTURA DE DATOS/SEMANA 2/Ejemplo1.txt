@@ -1,0 +1,38 @@
+package Semana1;
+import java.util.ArrayList;
+public class AED_Programa4 {
+    public static void main(String[] args) {
+        // crea un nuevo objeto ArrayList de objetos String con una capacidad inicial de 10 
+         ArrayList<String> items = new ArrayList();
+         items.add("red"); // adjunta un elemento a la lista
+         items.add(0, "yellow"); // inserta "yellow" en el índice 0
+         // encabezado
+         System.out.print("Muestra contenido de lista con ciclo for con contador:");
+        // muestra los colores en la lista
+        for (int i = 0; i < items.size(); i++)
+            System.out.printf(" %s", items.get(i));
+        // muestra los colores con el método display
+        display(items,"%nMostrar contenido de la lista con for mejorado:");
+        items.add("green"); // agrega "green" al final de la lista
+        items.add("yellow"); // agrega "yellow" al final de la lista
+        display(items, "Lista con dos nuevos elementos:");
+        items.remove("yellow");// elimina el primer "yellow"
+        display(items, "Eliminar primera instancia de yellow:");
+        items.remove(1); // elimina elemento en índice 1
+        display(items, "Eliminar segundo elemento de la lista (green):");
+        // Verifica si hay un elemento en la lista
+        System.out.printf("\"red\" está %sen la lista%n",items.contains("red") ? "": "no ");
+        // muestra el número de elementos en la lista
+        System.out.printf("Tamaño: %s%n", items.size()); 
+    }
+    // muestra los elementos de ArrayList en la consola
+    public static void display(ArrayList<String> items, String header)
+    {
+        System.out.printf(header); // mostrar encabezado
+        // muestra cada elemento en items
+        for (String item : items)
+            System.out.printf(" %s", item);
+        System.out.println();        
+    }
+}
+
