@@ -1,2 +1,2 @@
 # Ya fue el repo xd
-OneDrive: https://unmsmmail-my.sharepoint.com/:f:/g/personal/frank_condor_unmsm_edu_pe/EotXE46hrDRHqgAWoX3DEukB3A4z-xTFBThgaD4QJLNebw?e=qplvey
+https://unmsmmail-my.sharepoint.com/:f:/g/personal/frank_condor_unmsm_edu_pe/EotXE46hrDRHqgAWoX3DEukBU5bHXQjL6jkxHS0IJ3uf_g?e=tPx7FP
